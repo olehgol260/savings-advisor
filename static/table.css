@@ -53,6 +53,10 @@ tr:hover td {
     border-bottom: 1px solid #22262e;
 }
 
+tr.row_template {
+    display:none;
+}
+
 tr:first-child {
     border-top:none;
 }

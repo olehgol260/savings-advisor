@@ -5,18 +5,18 @@
 
     <title>hello</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-    <link rel="stylesheet" type="text/css" href="../css/table.css">
+    <link rel="stylesheet" type="text/css" href="/static/table.css">
 </head>
 
 <body>
 
-<form action="/data" method="get">
+<form id="input_form">
     Salary: <input type="number" name="salary"><br>
     Want to have: <input type="number" name="goal"><br>
     <input type="submit" value="Submit">
 </form>
 
-<table class="table-fill">
+<table id="my_table" class="table-fill" style="display:none">
     <thead>
     <tr>
         <th class="text-center">Percent</th>
@@ -25,16 +25,16 @@
     </tr>
     </thead>
 
-    <tbody class="table-hover">
-    {{ range .}}
-    <tr>
-        <td class="text-center">{{ .Percent }}</td>
-        <td class="text-center">{{ .ResultIncome }}</td>
-        <td class="text-center">{{ .Time }}</td>
+    <tbody id="table_body" class="table-hover">
+    <tr class="row_template">
+        <td class="text-center percent">{{ .Percent }}</td>
+        <td class="text-center result_income">{{ .ResultIncome }}</td>
+        <td class="text-center time">{{ .Time }}</td>
     </tr>
-    {{end}}
     </tbody>
 </table>
+
+<script type="text/javascript" src="/static/table.js"></script>
 
 </body>
 </html>

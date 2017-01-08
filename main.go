@@ -14,7 +14,7 @@ func main() {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*")
 
-	r.Static("/css", "css")
+	r.Static("/static", "static")
 
 	r.GET("/data", calculate)
 	r.GET("/", func(c *gin.Context) {
@@ -29,9 +29,9 @@ type Input struct {
 }
 
 type ResultRow struct {
-	Percent      int64
-	ResultIncome int64
-	Time         string
+	Percent      int64  `json:"percent"`
+	ResultIncome int64  `json:"result_income"`
+	Time         string `json:"time"`
 }
 
 func prepareTime(months int64) string {
@@ -71,5 +71,5 @@ func calculate(c *gin.Context) {
 			Time:         prepareTime(months),
 		})
 	}
-	c.HTML(http.StatusOK, "index.html", response)
+	c.JSON(http.StatusOK, response)
 }
